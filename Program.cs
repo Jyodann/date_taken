@@ -76,8 +76,6 @@ internal class Program
 					Console.WriteLine($"File {fileName} has no date");
 					finalFileDirectory = $@"{unsortedDirectory}\{fileName}";
 				}
-
-				
 			}
 			catch (ImageProcessingException)
 			{
@@ -96,7 +94,7 @@ internal class Program
 				} else {
 					var guid = Guid.NewGuid().ToString();
 					Console.WriteLine($"File {fileName} is a duplicate. Appending {guid} to the start of filename");
-					finalFileDirectory = $@"{filesWithIssues}\{guid}-{fileName}";
+					finalFileDirectory = $@"{finalFileDirectory}\{guid}-{fileName}";
 				}
 			}
 			File.Move(file, finalFileDirectory, replaceDuplicates);
