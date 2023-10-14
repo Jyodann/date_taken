@@ -46,10 +46,6 @@ The application uses the EXIF format information tied to your photo to attempt t
 
 ## Usage
 
-```
-PLEASE NOTE THAT FILES WITH THE SAME NAME ARE OVERWRITTEN IF THEY HAPPEN TO FALL ON THE SAME DATE
-```
-
 Double Click the .exe file, and a Command prompt / Terminal will appear. Type in the FULL path of where you want to look for files. And where you would like to move your files. 
 
 An example of how a FULL path looks like: 
