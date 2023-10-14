@@ -67,4 +67,4 @@ Dependencies:
 - .NET 7
 - MetadataExtractor
 
-To set up, just clone this directory, and use `dotnet run`, it should install all dependencies for you.
+To set up, just clone this repo, and use `dotnet run` on the root directory, it should install all dependencies for you.
