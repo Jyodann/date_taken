@@ -69,33 +69,37 @@ internal class Program
 					var directoryFriendlyDate = date.ToString("dd-MM-yyyy");
 					var parentDirectory = $@"{workingDirectory}\{directoryFriendlyDate}";
 					System.IO.Directory.CreateDirectory(parentDirectory);
-					finalFileDirectory = $@"{parentDirectory}\{fileName}";
+					finalFileDirectory = $@"{parentDirectory}\";
 				}
 				else
 				{
 					Console.WriteLine($"File {fileName} has no date");
-					finalFileDirectory = $@"{unsortedDirectory}\{fileName}";
+					finalFileDirectory = $@"{unsortedDirectory}\";
 				}
 			}
 			catch (ImageProcessingException)
 			{
 				Console.WriteLine($"File {fileName} has an unrecognised format");
-				finalFileDirectory = $@"{filesWithIssues}\{fileName}";
+				finalFileDirectory = $@"{filesWithIssues}\";
 			}
 			catch (IndexOutOfRangeException)
 			{
 				Console.WriteLine($"File {fileName} has an unrecognised format");
-				finalFileDirectory = $@"{filesWithIssues}\{fileName}";
+				finalFileDirectory = $@"{filesWithIssues}\";
 			}
 
-			if (File.Exists(finalFileDirectory)) {
+			if (File.Exists($@"{finalFileDirectory}\{fileName}")) {
 				if (replaceDuplicates) {
 					Console.WriteLine($"File {fileName} is a duplicate. Replacing...");
+					finalFileDirectory = $@"{finalFileDirectory}\{fileName}";
 				} else {
 					var guid = Guid.NewGuid().ToString();
 					Console.WriteLine($"File {fileName} is a duplicate. Appending {guid} to the start of filename");
-					finalFileDirectory = $@"{finalFileDirectory}\{guid}-{fileName}";
+					var finalFileName = $"{guid}-{fileName}";
+					finalFileDirectory = $@"{finalFileDirectory}\{finalFileName}";
 				}
+			} else {
+				finalFileDirectory = $@"{finalFileDirectory}\{fileName}";
 			}
 			File.Move(file, finalFileDirectory, replaceDuplicates);
 		}
